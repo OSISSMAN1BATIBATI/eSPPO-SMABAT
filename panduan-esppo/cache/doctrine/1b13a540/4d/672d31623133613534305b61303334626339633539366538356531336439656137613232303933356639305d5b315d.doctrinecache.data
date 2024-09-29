@@ -1,0 +1,57 @@
+1727167643
+a:2:{s:7:"content";s:7133:"<h2 id="desain-esppo">Desain eSPPO<a href="#desain-esppo" class="toc-anchor after" data-anchor-icon="#" aria-label="Anchor"></a></h2>
+<p><strong>eSPPO (Sistem Penyelenggaraan Pemilihan OSIS Elektronik)</strong> merupakan aplikasi berbasis web yang dirancang untuk menyelenggarakan pemilihan OSIS secara elektronik. Sebagai aplikasi berbasis web, eSPPO dapat diakses dari berbagai perangkat yang terhubung ke internet maupun jaringan lokal (LAN), sehingga fleksibel dalam penggunaannya, baik di lingkungan sekolah ataupun dalam skala yang lebih luas.</p>
+<h3 id="teknologi-dan-arsitektur-">Teknologi dan Arsitektur Sistem<a href="#teknologi-dan-arsitektur-" class="toc-anchor after" data-anchor-icon="#" aria-label="Anchor"></a></h3>
+<ul>
+<li>
+<p><strong>Pemrograman Back-End</strong>: eSPPO diprogram menggunakan bahasa PHP murni tanpa framework tambahan seperti CodeIgniter atau Laravel. Hal ini memungkinkan aplikasi memiliki tingkat fleksibilitas dan kustomisasi yang tinggi, serta memberikan kebebasan pengembangan lebih lanjut. Meski demikian, arsitektur eSPPO juga dapat dikembangkan agar kompatibel dengan framework PHP modern, jika dibutuhkan di masa depan.</p>
+</li>
+<li>
+<p><strong>Framework UI Front-End</strong>: Pada bagian antarmuka pengguna (UI), eSPPO menggunakan kombinasi <strong>Bootstrap 5</strong> dan <strong>AdminLTE 3.2</strong> untuk memberikan tampilan yang modern, responsif, dan mudah digunakan. <strong>Bootstrap 5</strong> menawarkan fitur-fitur desain berbasis grid dan komponen yang memudahkan pengembangan front-end, sementara <strong>AdminLTE 3.2</strong> menyediakan template dashboard yang mendukung pengelolaan data dengan antarmuka yang ramah pengguna.</p>
+</li>
+<li>
+<p><strong>Jaringan dan Koneksi</strong>: Salah satu keunggulan eSPPO adalah fleksibilitasnya dalam pengaturan koneksi. Aplikasi ini dapat beroperasi di jaringan lokal (LAN) atau di internet, tergantung pada infrastruktur yang tersedia. eSPPO mendukung beberapa tipe koneksi, termasuk <strong>HTTP klasik</strong>, <strong>HTTPS</strong> untuk koneksi terenkripsi, dan <strong>HTTP/2</strong>, yang menawarkan kinerja lebih cepat dan efisien dalam pengiriman data selama server web mendukung protokol tersebut.</p>
+</li>
+<li>
+<p><strong>Server Basis Data MySQL/MariaDB</strong>: Untuk mengelola dan menyimpan data pemilihan, eSPPO memerlukan akses ke server basis data <strong>MySQL</strong> atau yang kompatibel, seperti <strong>MariaDB</strong>. Server basis data ini menyimpan semua informasi penting terkait pemilih, kandidat, hasil suara, dan aktivitas pemilihan lainnya secara aman dan efisien.</p>
+</li>
+<li>
+<p><strong>Operasi Jarak Jauh dan Lokasi</strong>: Karena berbasis web, eSPPO dapat diakses dari jarak jauh menggunakan perangkat apa pun yang memiliki browser web dan koneksi ke jaringan. Hal ini memudahkan pemilih dan panitia untuk mengakses aplikasi tanpa batasan geografis, selama memiliki akses ke server hosting aplikasi, baik melalui jaringan lokal maupun internet.</p>
+</li>
+</ul>
+<h3 id="kebutuhan-infrastruktur">Kebutuhan Infrastruktur<a href="#kebutuhan-infrastruktur" class="toc-anchor after" data-anchor-icon="#" aria-label="Anchor"></a></h3>
+<p>Untuk menjalankan <strong>eSPPO</strong>, infrastruktur berikut diperlukan:</p>
+<ul>
+<li><strong>Web Server</strong>: Aplikasi ini di-host pada web server seperti <strong>Apache HTTP Server</strong>, yang mampu menjalankan PHP dan mendukung protokol koneksi HTTP/HTTPS. Jika diperlukan, <strong>HTTP/2</strong> juga bisa diaktifkan untuk meningkatkan performa.</li>
+<li><strong>Server Basis Data</strong>: Database tipe <strong>MySQL</strong> atau <strong>MariaDB</strong> harus tersedia untuk menyimpan semua data yang terkait dengan pemilihan. Koneksi antara web server dan database harus terjamin aman dan cepat untuk menghindari gangguan selama pemilihan berlangsung.</li>
+</ul>
+<h2 id="arsitektur-infrastruktur-">Arsitektur Infrastruktur eSPPO<a href="#arsitektur-infrastruktur-" class="toc-anchor after" data-anchor-icon="#" aria-label="Anchor"></a></h2>
+<p>Infrastruktur <strong>eSPPO</strong> terdiri dari beberapa komponen utama yang saling terhubung melalui jaringan, baik melalui internet maupun LAN, untuk memastikan sistem berfungsi dengan baik. Berikut adalah diagram teknis arsitektur infrastruktur <strong>eSPPO</strong>:</p>
+<p><img alt="Diagram" src="/esppo-smabat/panduan-esppo/user/pages/Images/Presentasi_Pengenalan_eSPPO_SMABAT-Diagram_Teknis_Infrastruktur.png"></p>
+<ol>
+<li>
+<p><strong>PASSE (Perangkat Akses Surat Suara Elektronik)</strong>: Perangkat yang digunakan oleh pemilih untuk mengakses surat suara secara elektronik melalui browser internet. PASSE dapat berupa laptop, tablet, atau perangkat lainnya yang terhubung ke jaringan.</p>
+</li>
+<li>
+<p><strong>Klien Web Panitia/Pengawas</strong>: Digunakan oleh panitia dan pengawas untuk mengelola data pemilih, memantau jalannya pemilihan, dan melihat hasil perolehan suara. Panitia dan pengawas dapat mengakses Pusminlihdu melalui jaringan internet atau LAN.</p>
+</li>
+<li>
+<p><strong>Web Server</strong>: Menjalankan aplikasi eSPPO, di mana SSE dan Pusminlihdu di-hosting. Server ini membutuhkan layanan HTTP/HTTPS untuk mengamankan dan mengatur aliran data antara klien dan server. Teknologi yang digunakan meliputi <strong>Apache</strong> sebagai server HTTP dan <strong>PHP</strong> untuk pemrosesan logika aplikasi.</p>
+</li>
+<li>
+<p><strong>Database Server</strong>: Menyimpan semua data pemilihan, termasuk daftar pemilih, data kandidat, dan hasil perolehan suara. <strong>MariaDB</strong> digunakan sebagai basis data yang terhubung dengan web server. Koneksi antara web server dan database dilakukan melalui koneksi yang aman.</p>
+</li>
+</ol>
+<h3 id="tipe-koneksi">Tipe Koneksi:<a href="#tipe-koneksi" class="toc-anchor after" data-anchor-icon="#" aria-label="Anchor"></a></h3>
+<ul>
+<li><strong>Merah (HTTP)</strong>: Digunakan untuk koneksi yang tidak terenkripsi, di mana keamanan tidak menjadi prioritas utama (misalnya pada jaringan lokal yang aman).</li>
+<li><strong>Hitam (HTTPS)</strong>: Koneksi terenkripsi untuk menjamin keamanan data yang dikirimkan antara klien dan server, terutama pada jaringan internet.</li>
+<li><strong>Hijau</strong>: Koneksi internal antara web server dan database untuk mengakses dan menyimpan data secara real-time.</li>
+</ul>
+<h2 id="cara-kerja-sistem-esppo">Cara Kerja Sistem eSPPO<a href="#cara-kerja-sistem-esppo" class="toc-anchor after" data-anchor-icon="#" aria-label="Anchor"></a></h2>
+<ol>
+<li><strong>Pemilih</strong> mengakses PASSE melalui perangkatnya, mengautentikasi diri, dan memilih pasangan calon yang diinginkan.</li>
+<li>Data suara dikirimkan melalui jaringan (internet/LAN) ke <strong>Web Server</strong>, di mana SSE akan mengolah suara yang masuk.</li>
+<li><strong>Web Server</strong> memproses dan menyimpan hasil pemungutan suara ke <strong>Database Server</strong> secara real-time.</li>
+<li>Panitia dan pengawas dapat mengakses <strong>Pusminlihdu</strong> melalui klien web untuk memantau proses pemungutan suara, melihat laporan, dan hasil akhir pemilihan yang dihasilkan oleh sistem.</li>
+</ol>";s:12:"content_meta";N;}
